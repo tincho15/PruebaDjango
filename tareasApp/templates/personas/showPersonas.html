@@ -1,0 +1,42 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<div class="col-12">
+		<h1>Personas</h1>
+	</div>
+
+	{% if lista.count != 0 %}
+	<div class="col-12">
+		<table class="table table-dark">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>E-mail</th>
+					<th>Contactar</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for Persona in lista %}
+				<tr>
+					<td>{{ Persona.nombre }}</td>
+					<td>{{ Persona.email }}</td>
+					<td>
+						<a href="mailto:{{ Persona.email }}" target="_top" class="btn btn-success">Contactar</a>
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	{% else %}
+		<div class="col-12">
+			<h1 class="display-4">No hay nadie por aqui!</h1>
+		</div>
+	{% endif %}
+
+
+
+
+{% endblock %}

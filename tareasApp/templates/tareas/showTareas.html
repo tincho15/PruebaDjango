@@ -1,0 +1,31 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<div class="col-12">
+		<h1>Tareas</h1>
+	</div>
+	{% if lista.count != 0 %}
+		{% for Tarea in lista %}
+			<div class="col-12">
+				<div class="jumbotron">
+					<h1 class="display-4">{{ Tarea.titulo }}</h1>
+					<hr class="my-3">
+					<h5>Descripcion: </h5>
+					<p>{{ Tarea.descripcion }}</p>
+					<div class="row">
+						<div class="col-md-6">
+							<h5>Persona asignada: </h5>
+							<p>{{ Tarea.asignado.nombre }}</p>
+						</div>
+						<div class="col-md-6">
+							<a href="mailto:{{ Tarea.asignado.email }}" target="_top" class="btn btn-success">Contactar</a>
+						</div>
+					</div>
+			</div>
+		{% endfor %}
+	{% else %}
+		<h1 class="display-4">Parece que no hay tareas todavia!</h1>
+	{% endif %}
+{% endblock %}
